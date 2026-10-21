@@ -10,40 +10,48 @@ public class GameDataMgr
     private UserData userData;
     public UserData UserData => userData;
 
-    private List<string> userNames;
-    public List<string> UserNames => userNames;
+    private AccountIndex accountIndex;
+    public string lastUser => accountIndex.lastUserName;
 
-    public string lastUserName;
+    
 
     private GameDataMgr()
     {
-        userData = JsonMgr.Instance.LoadDate<UserData>(lastUserName);
+        accountIndex = JsonMgr.Instance.LoadDate<AccountIndex>("accounts");
+
+        userData = LoadUserName(lastUser);
     }
 
-    public void SaveUserData(string userName)
+    //判断用户是否存在
+    public bool IsExist(string username)
     {
-        JsonMgr.Instance.SaveDate(userData, userName);
-        UserNames.Add(userName);
+        return accountIndex.userNames.Contains(username);
     }
 
-    //记录上次登录账号
-    public void savelastUserName(string userName)
+    //存储
+    public void SaveUserData(UserData data, string username)
     {
-        lastUserName = userName;
+        JsonMgr.Instance.SaveDate(data, username);
     }
 
-    //判断存不存在账号
-    public bool IsExist(string userName)
+    //读取
+    public UserData LoadUserName(string username)
     {
-        if (UserNames.Contains(userName))
+        return JsonMgr.Instance.LoadDate<UserData>(username);
+    }
+
+    //保存用户名
+    public void SaveUser(string username)
+    {
+        if(!accountIndex.userNames.Contains(username))
         {
-            return true;
+            accountIndex.userNames.Add(username);
         }
-        else
-        {
-            return false;
-        }
+        
+        accountIndex.lastUserName = username;
+        JsonMgr.Instance.SaveDate(accountIndex, "accounts");
     }
 
-    
+
+
 }

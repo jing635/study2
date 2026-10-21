@@ -64,16 +64,28 @@ public class LoginPanel : BasePanel
             {
                 if ( GameDataMgr.Instance.IsExist(tmpuserName.text) )
                 {
-                    //如果是上次服务器不是空，就进服务器面板
-                    //保存用户信息
-                    GameDataMgr.Instance.UserData.isRememberPassWord = tgrememberun.isOn;
-                    GameDataMgr.Instance.UserData.isautoLogin = tgautoLogin.isOn;
-                    GameDataMgr.Instance.UserData.isPlayMusic = tgplayMusic.isOn;
-                    GameDataMgr.Instance.SaveUserData(tmpuserName.text);
-                    //记录登录用户
-                    GameDataMgr.Instance.savelastUserName(tmpuserName.text);
-                    //换到服务器面板
-                    //为空就进选择服务器面板
+                    UserData data = GameDataMgr.Instance.LoadUserName(tmpuserName.text);
+
+                    if (tmppassWord.text == data.passWord)
+                    {
+                        data.isRememberPassWord = tgrememberun.isOn;
+                        data.isautoLogin = tgautoLogin.isOn;
+                        data.isPlayMusic = tgplayMusic.isOn;
+
+                        GameDataMgr.Instance.SaveUserData(data, data.userName);
+                        GameDataMgr.Instance.SaveUser(data.userName);
+
+                        UIManager.Instance.HidePanel<LoginPanel>();
+                        UIManager.Instance.ShowPanel<ServerPanel>();
+                    
+                    }
+                    else
+                    {
+                        TipPanel panel = UIManager.Instance.ShowPanel<TipPanel>();
+                        panel.ChangeInfo("密码错误");
+                    }
+
+
                 }
                 else
                 {
@@ -98,28 +110,27 @@ public class LoginPanel : BasePanel
     {
         base.ShowMe();
 
-        string filename = GameDataMgr.Instance.lastUserName;
-        UserData data = JsonMgr.Instance.LoadDate<UserData>(filename);
+        tmpuserName.text = GameDataMgr.Instance.UserData.userName;
+        tgrememberun.isOn = GameDataMgr.Instance.UserData.isRememberPassWord;
+        tgautoLogin.isOn = GameDataMgr.Instance.UserData.isautoLogin;
+        tgplayMusic.isOn = GameDataMgr.Instance.UserData.isPlayMusic;
 
-        tmpuserName.text = data.userName;
-        tmppassWord.text = data.passWord;
-        tgrememberun.isOn = data.isRememberPassWord;
-        tgautoLogin.isOn = data.isautoLogin;
-        tgplayMusic.isOn = data.isPlayMusic;
-
-        if (tgrememberun.isOn)
+        if ( tgrememberun.isOn)
         {
-            tmppassWord.text = data.passWord;
+            tmppassWord.text = GameDataMgr.Instance.UserData.passWord;
+
         }
         if (tgautoLogin.isOn)
         {
-            //直接跳到服务器面板
-        }
-        if (tgplayMusic.isOn)
-        {
-            //播放背景音乐
+            //直接进入服务器面板
+
         }
 
 
+    }
+    public void saveInfo(string info1, string info2)
+    {
+        tmpuserName.text = info1;
+        tmppassWord.text = info2;
     }
 }

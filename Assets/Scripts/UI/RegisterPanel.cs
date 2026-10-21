@@ -28,12 +28,22 @@ public class RegisterPanel : BasePanel
             }
             else
             {
-                GameDataMgr.Instance.UserData.userName = tmpUsername.text;
-                GameDataMgr.Instance.UserData.passWord = tmpPassword.text;
-                GameDataMgr.Instance.SaveUserData(tmpUsername.text);
+                if (GameDataMgr.Instance.IsExist(tmpUsername.text))
+                {
+                    TipPanel panel = UIManager.Instance.ShowPanel<TipPanel>();
+                    panel.ChangeInfo("用户已存在");
+                }
+                else
+                {
+                    UserData data = new UserData();
 
-                UIManager.Instance.HidePanel<RegisterPanel>();
-                UIManager.Instance.ShowPanel<LoginPanel>();
+                    data.userName = tmpUsername.text;
+                    data.passWord = tmpPassword.text;
+
+                    GameDataMgr.Instance.SaveUserData(data, data.userName);
+                    GameDataMgr.Instance.SaveUser(data.userName);
+
+                }
             }
         });
     }
