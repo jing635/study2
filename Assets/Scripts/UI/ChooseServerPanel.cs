@@ -57,6 +57,7 @@ public class ChooseServerPanel : BasePanel
                         end = servers.Count;
                     }
                     UpdataInfo(begin, end);
+                    return;
                 }
             }
         }

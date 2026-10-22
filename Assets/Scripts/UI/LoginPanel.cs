@@ -77,8 +77,18 @@ public class LoginPanel : BasePanel
                         GameDataMgr.Instance.SaveUserData(data, data.userName);
                         GameDataMgr.Instance.SaveUser(data.userName);
 
-                        UIManager.Instance.HidePanel<LoginPanel>();
-                        UIManager.Instance.ShowPanel<ServerPanel>();
+                        //判断有没有选过服务器
+                        if( GameDataMgr.Instance.UserData.lastServer ==-1)
+                        {
+                            UIManager.Instance.HidePanel<LoginPanel>();
+                            UIManager.Instance.ShowPanel<ChooseServerPanel>();
+                            
+                        }
+                        else
+                        {
+                            UIManager.Instance.HidePanel<LoginPanel>();
+                            UIManager.Instance.ShowPanel<ServerPanel>();
+                        }
                     
                     }
                     else
