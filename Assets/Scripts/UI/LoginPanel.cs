@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class LoginPanel : BasePanel
 {
-    public TextMeshProUGUI tmpuserName;
-    public TextMeshProUGUI tmppassWord;
+    public TMP_InputField tmpuserName;
+    public TMP_InputField tmppassWord;
     public Toggle tgrememberun;
     public Toggle tgautoLogin;
     public Toggle tgplayMusic;
@@ -72,6 +72,8 @@ public class LoginPanel : BasePanel
                         data.isautoLogin = tgautoLogin.isOn;
                         data.isPlayMusic = tgplayMusic.isOn;
 
+                        GameDataMgr.Instance.SetCurrentUser(data);
+
                         GameDataMgr.Instance.SaveUserData(data, data.userName);
                         GameDataMgr.Instance.SaveUser(data.userName);
 
@@ -111,8 +113,8 @@ public class LoginPanel : BasePanel
         base.ShowMe();
 
         tmpuserName.text = GameDataMgr.Instance.UserData.userName;
-        tgrememberun.isOn = GameDataMgr.Instance.UserData.isRememberPassWord;
-        tgautoLogin.isOn = GameDataMgr.Instance.UserData.isautoLogin;
+        tgrememberun.SetIsOnWithoutNotify(GameDataMgr.Instance.UserData.isRememberPassWord);
+        tgautoLogin.SetIsOnWithoutNotify(GameDataMgr.Instance.UserData.isautoLogin);
         tgplayMusic.isOn = GameDataMgr.Instance.UserData.isPlayMusic;
 
         if ( tgrememberun.isOn)

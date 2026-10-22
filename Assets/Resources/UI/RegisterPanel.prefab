@@ -872,8 +872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52f1fdb02cce00249b1b198126ed5d56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmpUsername: {fileID: 107425864400090613}
-  tmpPassword: {fileID: 8601466179424897784}
+  tmpUsername: {fileID: 7023657500225992993}
+  tmpPassword: {fileID: 2604855688503493502}
   btnBack: {fileID: 57761857617810749}
   btnSure: {fileID: 4722674865301708734}
 --- !u!1 &3649411075019572944

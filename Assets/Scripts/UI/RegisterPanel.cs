@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class RegisterPanel : BasePanel
 {
-    public TextMeshProUGUI tmpUsername;
-    public TextMeshProUGUI tmpPassword;
+    public TMP_InputField tmpUsername;
+    public TMP_InputField tmpPassword;
     public Button btnBack;
     public Button btnSure;
     public override void Init()
@@ -39,6 +39,8 @@ public class RegisterPanel : BasePanel
 
                     data.userName = tmpUsername.text;
                     data.passWord = tmpPassword.text;
+
+                    GameDataMgr.Instance.SetCurrentUser(data);
 
                     GameDataMgr.Instance.SaveUserData(data, data.userName);
                     GameDataMgr.Instance.SaveUser(data.userName);

@@ -1522,8 +1522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b840f0e00c05f141b41333263bd5e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tmpuserName: {fileID: 8538547087388222693}
-  tmppassWord: {fileID: 6052486973795715345}
+  tmpuserName: {fileID: 72138568349820978}
+  tmppassWord: {fileID: 6950820920240887162}
   tgrememberun: {fileID: 2805714533693491294}
   tgautoLogin: {fileID: 4408420461352486982}
   tgplayMusic: {fileID: 2833655615988342125}

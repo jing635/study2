@@ -177,6 +177,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Nintendo Switch - Paper Mario_ The Origami King - UI - Text Boxes_2
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 1622
+        width: 938
+        height: 356
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 540f0a5fec479ba4b9b67645e78a3bd1
+      internalID: -1186068794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -190,6 +211,7 @@ TextureImporter:
     nameFileIdTable:
       Nintendo Switch - Paper Mario_ The Origami King - UI - Text Boxes_0: 1982348429
       Nintendo Switch - Paper Mario_ The Origami King - UI - Text Boxes_1: 478708170
+      Nintendo Switch - Paper Mario_ The Origami King - UI - Text Boxes_2: -1186068794
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

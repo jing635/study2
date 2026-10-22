@@ -13,13 +13,19 @@ public class GameDataMgr
     private AccountIndex accountIndex;
     public string lastUser => accountIndex.lastUserName;
 
-    
+    private List<ServerInfo> serverInfo;
+    public List<ServerInfo> ServerData => serverInfo;
+
+
+
 
     private GameDataMgr()
     {
         accountIndex = JsonMgr.Instance.LoadDate<AccountIndex>("accounts");
 
         userData = LoadUserName(lastUser);
+
+        serverInfo = JsonMgr.Instance.LoadDate <List<ServerInfo>>("ServerInfo");
     }
 
     //判断用户是否存在
@@ -49,6 +55,14 @@ public class GameDataMgr
         }
         
         accountIndex.lastUserName = username;
+        JsonMgr.Instance.SaveDate(accountIndex, "accounts");
+    }
+
+    //切换当前玩家
+    public void SetCurrentUser(UserData data)
+    {
+        userData = data;
+        accountIndex.lastUserName = data.userName;
         JsonMgr.Instance.SaveDate(accountIndex, "accounts");
     }
 
