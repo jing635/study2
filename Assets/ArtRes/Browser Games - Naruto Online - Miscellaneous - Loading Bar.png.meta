@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 359826799eed2dd45b162a8672c8b4a2
+guid: abb3e25ce47a5de438242aa90f73df1b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -134,7 +134,70 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Browser Games - Naruto Online - Miscellaneous - Loading Bar_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 211
+        width: 1071
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4430bbb358bb1545891c0e7e0359dbe
+      internalID: -57163685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Naruto Online - Miscellaneous - Loading Bar_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 181
+        width: 992
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2046ada859c14843b025229c337cbb3
+      internalID: 1950737834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Browser Games - Naruto Online - Miscellaneous - Loading Bar_2
+      rect:
+        serializedVersion: 2
+        x: 1002
+        y: 177
+        width: 63
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5828d186dd520294b9cfc729f04d7850
+      internalID: -298913148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +208,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Browser Games - Naruto Online - Miscellaneous - Loading Bar_0: -57163685
+      Browser Games - Naruto Online - Miscellaneous - Loading Bar_1: 1950737834
+      Browser Games - Naruto Online - Miscellaneous - Loading Bar_2: -298913148
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

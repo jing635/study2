@@ -46,7 +46,9 @@ public class RegisterPanel : BasePanel
                     GameDataMgr.Instance.SaveUser(data.userName);
 
                     UIManager.Instance.HidePanel<RegisterPanel>();
-                    UIManager.Instance.ShowPanel<LoginPanel>();
+                    LoginPanel panel = UIManager.Instance.ShowPanel<LoginPanel>();
+                    panel.saveInfo(data.userName,data.passWord);
+                    
 
                 }
             }

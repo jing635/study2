@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ServerPanel : BasePanel
@@ -24,6 +25,9 @@ public class ServerPanel : BasePanel
         btnsure.onClick.AddListener(() =>
         {
             //进到大厅场景
+            AudioManager.Instance.StopMusic("bk1");
+            SceneManager.LoadScene("GameLobbyScene");
+
         });
 
     }

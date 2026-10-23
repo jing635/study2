@@ -45,11 +45,13 @@ public class LoginPanel : BasePanel
             if(isOn)
             {
                 //播放音乐
+                AudioManager.Instance.SetEnterVolume(0.5f);
 
             }
             else
             {
                 //暂停音乐
+                AudioManager.Instance.SetEnterVolume(0f);
             }
         });
         
@@ -135,7 +137,13 @@ public class LoginPanel : BasePanel
         if (tgautoLogin.isOn)
         {
             //直接进入服务器面板
+            UIManager.Instance.HidePanel<LoginPanel>();
+            UIManager.Instance.ShowPanel<ServerPanel>();
 
+        }
+        if (!tgplayMusic.isOn)
+        {
+            AudioManager.Instance.SetEnterVolume(0f);
         }
 
 

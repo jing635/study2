@@ -7,7 +7,8 @@ public class ChooseServerPanel : BasePanel
 {
     public ScrollRect svLeft;
     public ScrollRect svRight;
-    
+    private List<GameObject> rightItems = new List<GameObject>();
+
     public override void Init()
     {
         //得到左边按钮的数据
@@ -38,44 +39,48 @@ public class ChooseServerPanel : BasePanel
 
         //得到用户的服务器，更新右边面板
         UserData data = GameDataMgr.Instance.UserData;
-        List<ServerInfo> servers = GameDataMgr.Instance.ServerData;
+        int begin;
 
-        if (data.lastServer == -1)
+        if (data.lastServer <= 0)
         {
-            UpdataInfo(1, 5);
+            //新号，默认显示第一组
+            begin = 1;
         }
         else
         {
-            for (int i = 0; i < 100; i++)
-            {
-                if ((i * 5 + 1) < data.lastServer && (i * 5 + 5) > data.lastServer)
-                {
-                    int begin = i * 5 + 1;
-                    int end = i * 5 + 5;
-                    if (end > servers.Count)
-                    {
-                        end = servers.Count;
-                    }
-                    UpdataInfo(begin, end);
-                    return;
-                }
-            }
+            //已选过服务器，显示他所在的那一组
+            begin = ((data.lastServer - 1) / 5) * 5 + 1;
         }
-        
-        
+
+        UpdataInfo(begin, begin + 4);
 
     }
 
     //跟新右边面板的方法
-    public void UpdataInfo(int beginindex, int endindex)
+    public void UpdataInfo(int beginIndex, int endIndex)
     {
-        for (int i = beginindex; i < endindex; i++)
+        foreach (GameObject item in rightItems)
+        {
+            Destroy(item);
+        }
+        rightItems.Clear();
+
+        List<ServerInfo> servers = GameDataMgr.Instance.ServerData;
+
+        if (endIndex > servers.Count)
+        {
+            endIndex = servers.Count;
+        }
+
+        for (int i = beginIndex; i <= endIndex; i++)
         {
             GameObject rb = Instantiate(Resources.Load<GameObject>("UI/RightButton"));
-            rb.transform.SetParent (svRight.content, false);
+            rb.transform.SetParent(svRight.content, false);
 
             RightButton rightButton = rb.GetComponent<RightButton>();
-            rightButton.updataSelf(beginindex);
+            rightButton.updataSelf(i);
+
+            rightItems.Add(rb);
         }
     }
 }

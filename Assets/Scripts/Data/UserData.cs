@@ -10,5 +10,11 @@ public class UserData
     public bool isRememberPassWord = false;
     public bool isautoLogin = false;
     public bool isPlayMusic = true;
+    public bool music = true;
+    public bool sound = true;
+    public float musicvolume = 0.5f;
+
+    public float soundvolume = 0.5f;
+
 
 }

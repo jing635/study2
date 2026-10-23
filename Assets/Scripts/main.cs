@@ -9,6 +9,7 @@ public class main : MonoBehaviour
     {
         UIManager.Instance.ShowPanel<bkimage>();
         UIManager.Instance.ShowPanel<LoginPanel>();
+        AudioManager.Instance.PlayMusic("bk1");
     }
 
     // Update is called once per frame
